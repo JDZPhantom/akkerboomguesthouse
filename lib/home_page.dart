@@ -1,8 +1,10 @@
 import 'package:akkerboomguesthouseapp/Booking_page.dart';
+import 'package:akkerboomguesthouseapp/Room_Service.dart';
 import 'package:akkerboomguesthouseapp/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:emoji_feedback/emoji_feedback.dart';
+import 'package:akkerboomguesthouseapp/Room_Cleaning.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:akkerboomguesthouseapp/customer _review_page.dart';
 
@@ -75,7 +77,7 @@ class _HomePageState extends State<HomePage> {
               }
               if(name=="Room Service"){
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>LoginPage()),
+                  MaterialPageRoute(builder: (context)=>RoomService()),
                 );
               }
               if(name=="Leave a Review"){
@@ -85,7 +87,7 @@ class _HomePageState extends State<HomePage> {
               }
               if(name=="Room Cleaning"){
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>LoginPage()),
+                  MaterialPageRoute(builder: (context)=>Room_cleaning()),
                 );
               }
 
