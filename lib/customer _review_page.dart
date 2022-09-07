@@ -90,16 +90,7 @@ class _Customer_ReviewState extends State<Customer_Review> {
               ),
             ),
             Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: MaterialButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                color: Colors.limeAccent,
-                child: Text("sign out"),
-              ),
-            ),
+
           ],
         ),
       ),

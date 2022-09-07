@@ -1,3 +1,4 @@
+import 'package:akkerboomguesthouseapp/Booking_page.dart';
 import 'package:akkerboomguesthouseapp/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> {
       onTap: (){
               if(name=="Book Now"){
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=>LoginPage()),
+                  MaterialPageRoute(builder: (context)=>Booking_page()),
                 );
               }
               if(name=="Room Service"){
@@ -168,6 +169,16 @@ class _HomePageState extends State<HomePage> {
                             _mainMenu('assets/Akkerboom.png', 'Leave a Review')
                           ],
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: MaterialButton(
+                        onPressed: () {
+                          FirebaseAuth.instance.signOut();
+                        },
+                        color: Colors.limeAccent,
+                        child: Text("sign out"),
                       ),
                     ),
                   ],
