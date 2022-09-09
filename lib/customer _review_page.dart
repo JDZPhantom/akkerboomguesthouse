@@ -26,6 +26,32 @@ class _Customer_ReviewState extends State<Customer_Review> {
   final feedback = "feedback";
   late String title;
   String text = "No Value Entered";
+  void _showcontent() {
+    showDialog(
+      context: context, barrierDismissible: false, // user must tap button!
+
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Leave a review'),
+          content:  SingleChildScrollView(
+            child:  ListBody(
+              children: [
+                Text('Thank you for your feedback!'),
+              ],
+            ),
+          ),
+          actions: [
+            FlatButton(
+              child: new Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   void _submitText() {
     setState(() {
@@ -73,12 +99,17 @@ class _Customer_ReviewState extends State<Customer_Review> {
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: TextField(
+                      controller: myController,
                       decoration: InputDecoration(labelText: "Any Feedback?"),
                       onChanged: (value) => title = value,
                     ),
                   ),
                   ElevatedButton(
-                      onPressed: _submitText,
+                      onPressed: () {
+                        myController.clear();
+                        _submitText();
+                        _showcontent();
+                      },
                       style: ButtonStyle(
                         elevation: MaterialStateProperty.all(8),
                         backgroundColor:
