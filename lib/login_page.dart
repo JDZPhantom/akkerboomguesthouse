@@ -1,9 +1,11 @@
 
 import 'package:akkerboomguesthouseapp/home_page.dart';
+import 'package:akkerboomguesthouseapp/reports_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:akkerboomguesthouseapp/reports_page.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -139,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
 
                       children: [
-                        Text("Customer? ",
+                        Text("Here are the reports",
                           style:TextStyle(color:Colors.black,
                             fontWeight: FontWeight.bold,),),
 
@@ -153,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       Navigator.push(context,
-                                        MaterialPageRoute(builder: (context)=> HomePage()),
+                                        MaterialPageRoute(builder: (context)=> reports_page()),
                                       );
                                     },
                                   style: TextStyle(

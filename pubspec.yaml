@@ -69,6 +69,12 @@ flutter:
   assets:
      - assets/Akkerboom.png
      - assets/bed.jpeg
+     - assets/mainReport.png
+     - assets/bookingReport.png
+     - assets/revenueReport.png
+     - assets/Customer Ratings.png
+     - assets/Room_Service.png
+     - assets/Room Cleaning.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
