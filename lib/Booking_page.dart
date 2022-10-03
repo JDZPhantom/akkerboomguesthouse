@@ -4,6 +4,18 @@ import 'package:akkerboomguesthouseapp/task.dart';
 import 'package:akkerboomguesthouseapp/new_task_form.dart';
 import 'package:select_form_field/select_form_field.dart';
 import 'package:intl/intl.dart';
+import 'main.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class Booking_page extends StatefulWidget {
   const Booking_page({Key? key}) : super(key: key);
@@ -14,7 +26,9 @@ class Booking_page extends StatefulWidget {
   State<Booking_page> createState() => _Booking_pageState();
 }
 
+
 class _Booking_pageState extends State<Booking_page> {
+  late String name,date,specreq;
 
   void _createBooking(String numberofguests,String Checkindate,String CheckOutdate , String guestname ,String specialRequests) {
 

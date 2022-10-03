@@ -33,20 +33,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
 
     FirebaseFirestore.instance
         .collection('bookings')
-        .add({'CheckOutdate': CheckOutdate});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'numberofguests': numberofguests});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'Checkindate': Checkindate});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'guestname':  guestname});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'specialRequests': specialRequests});
-
+        .add({'Name_Surname':  guestname,'Num_guest': numberofguests,
+      'CheckIn': Checkindate,'CheckOut': CheckOutdate,'specialRequest': specialRequests});
   }
 
 
@@ -122,7 +110,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
                   icon: Icon(Icons.add),
                 ),
                 validator: (value) {
-                  if (value!=null && value.isEmpty)
+                  if (value!=null && value.isEmpty )
                     return "Please enter number of guest";
                   return null;
                 },
@@ -216,6 +204,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
                 onPressed: (){
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
+                    _createBooking(_numguestController.text, _dateinput.text, _dateoutput.text, _nameController.text, _specialController.text);
                     _numguestController.clear();
                     _specialController.clear();
                     _nameController.clear();
