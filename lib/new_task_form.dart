@@ -35,7 +35,9 @@ class _NewTaskFormState extends State<NewTaskForm> {
         .collection('bookings')
         .add({'Name_Surname':  guestname,'Num_guest': numberofguests,
       'CheckIn': Checkindate,'CheckOut': CheckOutdate,'specialRequest': specialRequests});
+
   }
+
 
 
   _selectDate(BuildContext context) async {

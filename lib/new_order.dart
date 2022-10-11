@@ -37,31 +37,21 @@ class _new_orderState extends State<new_order> {
   ];
   OrderFood orderFood = new OrderFood();
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _dateController = TextEditingController();
-  TextEditingController _numguestController = TextEditingController();
+  TextEditingController _food = TextEditingController();
+  TextEditingController _roomnum = TextEditingController();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _specialController = TextEditingController();
   var _dropdownvalue;
   DateTime selectedDate = DateTime.now();
   DateTime sDate = DateTime.now();
-  void _createBooking(String numberofguests, String Checkindate,
-      String CheckOutdate, String guestname, String specialRequests) {
+  void _createOrder(String name, String roomnum,
+      String food, String specialRequests) {
     FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'CheckOutdate': CheckOutdate});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'numberofguests': numberofguests});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'Checkindate': Checkindate});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'guestname': guestname});
-    FirebaseFirestore.instance
-        .collection('bookings')
-        .add({'specialRequests': specialRequests});
+        .collection('Roomservice')
+        .add({'Room_num': roomnum,'Name':name,'food':food,'Special Request':specialRequests});
+
   }
+
 
   void dropdownCallback(String? selectedValue) {
     if (selectedValue is String) {
@@ -82,7 +72,7 @@ class _new_orderState extends State<new_order> {
         selectedDate = picked;
         var date =
             "${picked.toLocal().day}/${picked.toLocal().month}/${picked.toLocal().year}";
-        _dateController.text = date;
+        _food.text = date;
       });
   }
 
@@ -134,7 +124,7 @@ class _new_orderState extends State<new_order> {
                 },
               ),
               TextFormField(
-                controller: _numguestController,
+                controller: _roomnum,
                 onSaved: (val) => orderFood.Roomnum = val.toString(),
                 decoration: InputDecoration(
                   labelText: 'Room Number',
@@ -201,9 +191,11 @@ class _new_orderState extends State<new_order> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    _numguestController.clear();
+                    _createOrder(_nameController.text, _roomnum.text, _dropdownvalue,_specialController.text);
+                    _roomnum.clear();
                     _specialController.clear();
                     _nameController.clear();
+
                     _showcontent();
                   }
                 },
