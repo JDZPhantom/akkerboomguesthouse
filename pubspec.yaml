@@ -42,6 +42,12 @@ dependencies:
   cloud_firestore: ^3.4.6
   select_form_field:
   url_launcher:
+  date_field:
+  date_time_picker:
+  date_time_field:
+  dependencies:
+  firebase_core_platform_interface: 4.5.1
+  nice_buttons: ^0.0.1
 
 dev_dependencies:
   flutter_test:

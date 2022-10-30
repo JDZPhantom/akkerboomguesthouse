@@ -138,9 +138,9 @@ class _RoomServiceState extends State<RoomService> {
                           childAspectRatio: 1.30,
                           children: [
                             _mainMenu('assets/Akkerboom.png', 'Order Food'),
-                            _mainMenu('assets/Akkerboom.png', 'Nearby Activites'),
-                            _mainMenu('assets/Akkerboom.png', 'Maintainence '),
-                            _mainMenu('assets/Akkerboom.png', 'Contact'),
+                           // _mainMenu('assets/Akkerboom.png', 'Nearby Activites'),
+                            //_mainMenu('assets/Akkerboom.png', 'Maintainence '),
+                           // _mainMenu('assets/Akkerboom.png', 'Contact'),
 
 
                           ],

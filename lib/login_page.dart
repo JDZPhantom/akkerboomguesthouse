@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal:25.0 ),
-                    child: TextField(
+                    child: TextFormField(
                       controller: _emailController,
                       decoration:InputDecoration(
                           enabledBorder: OutlineInputBorder(
@@ -87,6 +87,14 @@ class _LoginPageState extends State<LoginPage> {
                           fillColor: Colors.white70,
                           hintText: "Email"
                       ),
+                      validator: (value){
+                        if(value!=null && value.isEmpty || !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value.toString())){
+                          //allow upper and lower case alphabets and space
+                          return "Invalid Email";
+                        }else{
+                          return null;
+                        }
+                      },
                     ),
 
                   ),
@@ -95,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal:25.0 ),
 
-                    child: TextField(
+                    child: TextFormField(
                       controller: _passwordController,
                       obscureText: true,
                       decoration:InputDecoration(
@@ -111,6 +119,11 @@ class _LoginPageState extends State<LoginPage> {
                           fillColor: Colors.white70,
                           hintText: "Password"
                       ),
+                      validator: (value) {
+                        if (value!=null && value.isEmpty )
+                          return "Please enter password";
+                        return null;
+                      },
                     ),
 
                   ),
@@ -141,30 +154,30 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
 
                       children: [
-                        Text("Here are the reports",
-                          style:TextStyle(color:Colors.black,
-                            fontWeight: FontWeight.bold,),),
+                        // Text("Here are the reports",
+                        //   style:TextStyle(color:Colors.black,
+                        //     fontWeight: FontWeight.bold,),),
 
 
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(fontSize: 15, color: Colors.blue),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Click Here ',
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Navigator.push(context,
-                                        MaterialPageRoute(builder: (context)=> reports_page()),
-                                      );
-                                    },
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                  )),
-
-                            ],
-                          ),
-                        )
+                        // RichText(
+                        //   text: TextSpan(
+                        //     style: TextStyle(fontSize: 15, color: Colors.blue),
+                        //     children: <TextSpan>[
+                        //       TextSpan(
+                        //           text: 'Click Here ',
+                        //           recognizer: TapGestureRecognizer()
+                        //             ..onTap = () {
+                        //               Navigator.push(context,
+                        //                 MaterialPageRoute(builder: (context)=> reports_page()),
+                        //               );
+                        //             },
+                        //           style: TextStyle(
+                        //             color: Colors.blue,
+                        //           )),
+                        //
+                        //     ],
+                        //   ),
+                        // )
                       ]),
 
                 ],),

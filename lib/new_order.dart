@@ -132,8 +132,8 @@ class _new_orderState extends State<new_order> {
                   icon: Icon(Icons.add),
                 ),
                 validator: (value) {
-                  if (value != null && value.isEmpty)
-                    return "Please enter room number";
+                  if (value != null && value.isEmpty || value !=null && int.parse(value)>8)
+                    return "Please enter valid room number";
                   return null;
                 },
               ),
@@ -168,7 +168,7 @@ class _new_orderState extends State<new_order> {
                               value: "Eggs and Bacon",
                             ),
                           ],
-                          onChanged: dropdownCallback),
+                          onChanged: dropdownCallback)
                     ),
                   ),
                 ],

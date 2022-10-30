@@ -186,6 +186,16 @@ class _reports_pageState extends State<reports_page> {
                               ),
                             ),
                           ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: MaterialButton(
+                          onPressed: () {
+                            FirebaseAuth.instance.signOut();
+                          },
+                          color: Colors.limeAccent,
+                          child: Text("sign out"),
+                        ),
+                      ),
 
 
 

@@ -97,7 +97,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
                   icon: Icon(Icons.numbers_rounded),
                 ),
                 validator: (value) {
-                  if (value!=null && value.isEmpty)
+                  if (value!=null && value.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value.toString()))
                     return "Enter your name";
                   return null;
                 },
@@ -112,8 +112,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
                   icon: Icon(Icons.add),
                 ),
                 validator: (value) {
-                  if (value!=null && value.isEmpty )
-                    return "Please enter number of guest";
+                  if (value!=null && value.isEmpty || value!=null && int.parse(value)> 8 )
+                    return "Please enter valid number of guests";
                   return null;
                 },
               ),
@@ -125,14 +125,15 @@ class _NewTaskFormState extends State<NewTaskForm> {
 
                 ),
                 readOnly: true,
+                autovalidateMode:AutovalidateMode.onUserInteraction ,
                 //set it true, so that user will not able to edit text
                 onTap: () async {
                   DateTime? pickedDate = await showDatePicker(
                       context: context,
                       initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
+                      firstDate: DateTime.now().subtract(Duration(days: 1)),
                       //DateTime.now() - not to allow to choose before today.
-                      lastDate: DateTime(2101));
+                      lastDate: DateTime(2100));
 
                   if (pickedDate != null) {
                     print(
@@ -151,6 +152,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
                     print("Date is not selected");
                   }
                 },
+
               ),
               TextFormField(
                 controller: _dateoutput,
@@ -164,9 +166,9 @@ class _NewTaskFormState extends State<NewTaskForm> {
                   DateTime? pickedDate = await showDatePicker(
                       context: context,
                       initialDate: DateTime.now(),
-                      firstDate: DateTime(2000),
+                      firstDate: DateTime.now().subtract(Duration(days: 1)),
                       //DateTime.now() - not to allow to choose before today.
-                      lastDate: DateTime(2101));
+                      lastDate: DateTime(2100));
 
                   if (pickedDate != null) {
                     print(
